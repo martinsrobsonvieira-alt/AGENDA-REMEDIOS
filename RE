@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Minha Agenda Online</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { color: #333; }
+        label { display: block; margin-top: 10px; }
+        input, textarea { width: 300px; padding: 8px; margin-top: 5px; }
+        button { margin-top: 15px; padding: 10px 20px; }
+        .evento { margin-top: 20px; padding: 10px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Agenda Online</h1>
+
+    <label>Data:</label>
+    <input type="date" id="data">
+
+    <label>Descrição:</label>
+    <textarea id="descricao"></textarea>
+
+    <button onclick="adicionarEvento()">Adicionar</button>
+
+    <h2>Eventos</h2>
+    <div id="lista"></div>
+
+    <script>
+        function adicionarEvento() {
+            const data = document.getElementById("data").value;
+            const desc = document.getElementById("descricao").value;
+
+            if (!data || !desc) {
+                alert("Preencha todos os campos!");
+                return;
+            }
+
+            const div = document.createElement("div");
+            div.className = "evento";
+            div.innerHTML = `<strong>${data}</strong><br>${desc}`;
+
+            document.getElementById("lista").appendChild(div);
+
+            document.getElementById("descricao").value = "";
+        }
+    </script>
+</body>
+</html>
